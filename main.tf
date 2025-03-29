@@ -1,7 +1,13 @@
-provider "aws" {
-  region = "eu-central-1"
+module "authors" {
+  source       = "./modules/dynamodb-table"
+  table_name   = "authors"
+  billing_mode = "PAY_PER_REQUEST"
+  attributes   = [{ name = "id", type = "S" }]
 }
 
-resource "aws_s3_bucket" "test_bucket" {
-  bucket = "test-bucket-for-terraform-lab"
+module "courses" {
+  source       = "./modules/dynamodb-table"
+  table_name   = "courses"
+  billing_mode = "PAY_PER_REQUEST"
+  attributes   = [{ name = "id", type = "S" }]
 }
