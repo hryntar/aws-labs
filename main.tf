@@ -24,6 +24,10 @@ module "frontend_cdn" {
   s3_website_endpoint = module.frontend_s3.website_endpoint
 }
 
+module "monitoring" {
+  source = "./modules/monitoring"
+}
+
 resource "random_id" "suffix" {
   byte_length = 4
 }
